@@ -9,12 +9,25 @@ class TicketControl {
     const { ultimo, hoy } = data;
 
     if (hoy === this.hoy) {
+      this.ultimo = ultimo;
     } else {
       this.reiniciarConteo();
     }
   }
 
   reiniciarConteo = () => {
+    this.ultimo = 0;
+    this.grabarArchivo();
+  };
+
+  siguiente = () => {
+    this.ultimo += 1;
+    this.grabarArchivo();
+
+    return `Ticket ${this.ultimo}`;
+  };
+
+  grabarArchivo = () => {
     let jsonData = {
       ultimo: this.ultimo,
       hoy: this.hoy
@@ -22,7 +35,6 @@ class TicketControl {
 
     let jsonDataString = JSON.stringify(jsonData);
     fs.writeFileSync("./server/data/data.json", jsonDataString);
-    console.log("Se ha inicializado el sistema");
   };
 }
 
