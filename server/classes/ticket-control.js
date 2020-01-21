@@ -10,6 +10,7 @@ class TicketControl {
 
     if (hoy === this.hoy) {
     } else {
+      this.reiniciarConteo();
     }
   }
 
@@ -20,7 +21,8 @@ class TicketControl {
     };
 
     let jsonDataString = JSON.stringify(jsonData);
-    fs.writeFileSync("../data/data.json", jsonDataString);
+    fs.writeFileSync("./server/data/data.json", jsonDataString);
+    console.log("Se ha inicializado el sistema");
   };
 }
 
