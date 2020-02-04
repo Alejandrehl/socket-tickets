@@ -10,6 +10,10 @@ socket.on("disconnect", () => {
   console.log("Client disconnected from server");
 });
 
+socket.on("estadoActual", res => {
+  label.text(res.actual);
+});
+
 $("#generate-new-ticket-button").click(() => {
   socket.emit("siguienteTicket", null, siguienteTicket =>
     label.text(siguienteTicket)
