@@ -14,7 +14,9 @@ Express server ready to execute and serve public folder in the web.
 
 ## JavaScript Functions
 
-- .shift: Método que elimina el primer elemento de un array
+- .shift: Método que elimina el primer elemento de un array.
+- .unshift: Método que agregar un elemento a la primera posición de un array.
+- .splice(-1, 1): Esta forma de utilizar .splice elimina el último elemento de un array
 
 ## Libraries
 

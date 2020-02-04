@@ -12,13 +12,15 @@ class TicketControl {
     this.ultimo = 0;
     this.hoy = new Date().getDate();
     this.tickets = [];
+    this.ultimos4 = [];
 
     let data = require("../data/data.json");
     const { ultimo, hoy } = data;
 
     if (hoy === this.hoy) {
       this.ultimo = ultimo;
-      this.ticket = data.tickets;
+      this.tickets = data.tickets;
+      this.ultimos4 = data.ultimos4;
     } else {
       this.reiniciarConteo();
     }
@@ -27,6 +29,7 @@ class TicketControl {
   reiniciarConteo = () => {
     this.ultimo = 0;
     this.ticket = [];
+    this.ultimos4 = [];
     this.grabarArchivo();
   };
 
@@ -44,19 +47,27 @@ class TicketControl {
   };
 
   atenderTicket = escritorio => {
-    if (this.tickets.length === 0) {
-      return "No hay tickets";
-    }
+    if (this.tickets.length === 0) return "No hay tickets";
 
     let numeroTicket = this.tickets[0].numero;
     this.tickets.shift();
+
+    let atenderTicket = new Ticket(numeroTicket, escritorio);
+    this.ultimos4.unshift(atenderTicket);
+
+    if (this.ultimos4.length > 4) this.ultimos4.splice(-1, 1);
+
+    this.grabarArchivo();
+
+    return atenderTicket;
   };
 
   grabarArchivo = () => {
     let jsonData = {
       ultimo: this.ultimo,
       hoy: this.hoy,
-      tickets: this.tickets
+      tickets: this.tickets,
+      ultimos4: this.ultimos4
     };
 
     let jsonDataString = JSON.stringify(jsonData);
