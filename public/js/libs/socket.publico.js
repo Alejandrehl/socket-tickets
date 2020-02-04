@@ -18,9 +18,8 @@ const lblEscritorios = [
   lblEscritorio4
 ];
 
-socket.on("estadoActual", data => {
-  actualizaHTML(data.ultimos4);
-});
+socket.on("estadoActual", data => actualizaHTML(data.ultimos4));
+socket.on("ultimos4", data => actualizaHTML(data.ultimos4));
 
 const actualizaHTML = ultimos4 => {
   for (let i = 0; i < ultimos4.length; i++) {
