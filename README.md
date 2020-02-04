@@ -6,6 +6,13 @@ Express server ready to execute and serve public folder in the web.
 - npm install in root folder
 - npm run dev to run project in port 3000
 
+## Routes
+
+1. /: Ruta que retorna la vista con el input de escritorio y los botones de redirección a las demás pantallas.
+2. /escritorio.html?escritorio=1: Ruta que retorna la vista de un escritorio, permite atender un ticket. 1 es el parametro que varia.
+3. /nuevo-ticket.html: Ruta que retorna la vista para generar nuevos tickets.
+4. /public.html: Ruta que retorna la vista para ver que tickets estan siendo atendidos por cada escritorio.
+
 ## Socket Methods
 
 - .on: Método para escuchar cambios.
