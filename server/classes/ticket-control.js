@@ -42,9 +42,8 @@ class TicketControl {
     return `Ticket ${this.ultimo}`;
   };
 
-  getUltimoTicket = () => {
-    return `Ticket ${this.ultimo}`;
-  };
+  getUltimoTicket = () => `Ticket ${this.ultimo}`;
+  getUltimos4 = () => this.ultimos4;
 
   atenderTicket = escritorio => {
     if (this.tickets.length === 0) return "No hay tickets";
