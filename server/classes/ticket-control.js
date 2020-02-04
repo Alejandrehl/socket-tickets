@@ -39,9 +39,18 @@ class TicketControl {
     return `Ticket ${this.ultimo}`;
   };
 
-  getUltimoTicket() {
+  getUltimoTicket = () => {
     return `Ticket ${this.ultimo}`;
-  }
+  };
+
+  atenderTicket = escritorio => {
+    if (this.tickets.length === 0) {
+      return "No hay tickets";
+    }
+
+    let numeroTicket = this.tickets[0].numero;
+    this.tickets.shift();
+  };
 
   grabarArchivo = () => {
     let jsonData = {
